@@ -283,23 +283,10 @@ function checkAnswer() {
  */
 function randomDirection() {
   const direction = directions[randomSymbol(directions)]
+  const gyroImages = [gyroNorth, gyroEast, gyroSouth, gyroWest]
   answerParams.direction = direction
-  gyroNorth.style.visibility = HIDDEN
-  gyroEast.style.visibility = HIDDEN
-  gyroSouth.style.visibility = HIDDEN
-  gyroWest.style.visibility = HIDDEN
-  if (direction === GYRONORTH) {
-    gyroNorth.style.visibility = VISIBLE
-  }
-  if (direction === GYROEAST) {
-    gyroEast.style.visibility = VISIBLE
-  }
-  if (direction === GYROSOUTH) {
-    gyroSouth.style.visibility = VISIBLE
-  }
-  if (direction === GYROWEST) {
-    gyroWest.style.visibility = VISIBLE
-  }
+  hideAllImages(gyroImages)
+  showImage(direction, gyroImages)
 }
 
 /**
@@ -307,39 +294,79 @@ function randomDirection() {
  */
 function randomRbi() {
   const rbi = rbis[randomSymbol(rbis)]
+  const ribImages = [rbiNorth, rbiNorthEast, rbiEast, rbiSouthEast, rbiSouth, rbiSouthWest, rbiWest, rbiNorthWest]
   answerParams.rbi = rbi
-  rbiNorth.style.visibility = HIDDEN
-  rbiNorthEast.style.visibility = HIDDEN
-  rbiEast.style.visibility = HIDDEN
-  rbiSouthEast.style.visibility = HIDDEN
-  rbiSouth.style.visibility = HIDDEN
-  rbiSouthWest.style.visibility = HIDDEN
-  rbiWest.style.visibility = HIDDEN
-  rbiNorthWest.style.visibility = HIDDEN
-  if (rbi === NORTH) {
-    rbiNorth.style.visibility = VISIBLE
+  hideAllImages(ribImages)
+  showImage(rbi, ribImages)
+}
+
+/**
+ * 判斷圖形隱藏圖片
+ */
+function hideAllImages(images) {
+  images.forEach(image => {
+    hiddenImages(image)
+  })
+}
+
+/**
+ * 判斷圖形顯示圖片
+ */
+function showImage(ImageType, images) {
+  switch (ImageType) {
+    case GYRONORTH:
+      visibleImages(images[0]);
+      break;
+    case GYROEAST:
+      visibleImages(images[1]);
+      break;
+    case GYROSOUTH:
+      visibleImages(images[2]);
+      break;
+    case GYROWEST:
+      visibleImages(images[3]);
+      break;
+    case NORTH:
+      visibleImages(images[0]);
+      break;
+    case NORTHEAST:
+      visibleImages(images[1]);
+      break;
+    case EAST:
+      visibleImages(images[2]);
+      break;
+    case SOUTHEAST:
+      visibleImages(images[3]);
+      break;
+    case SOUTH:
+      visibleImages(images[4]);
+      break;
+    case SOUTHWEST:
+      visibleImages(images[5]);
+      break;
+    case WEST:
+      visibleImages(images[6]);
+      break;
+    case NORTHWEST:
+      visibleImages(images[7]);
+      break;
+    default:
+      break;
   }
-  if (rbi === NORTHEAST) {
-    rbiNorthEast.style.visibility = VISIBLE
-  }
-  if (rbi === EAST) {
-    rbiEast.style.visibility = VISIBLE
-  }
-  if (rbi === SOUTHEAST) {
-    rbiSouthEast.style.visibility = VISIBLE
-  }
-  if (rbi === SOUTH) {
-    rbiSouth.style.visibility = VISIBLE
-  }
-  if (rbi === SOUTHWEST) {
-    rbiSouthWest.style.visibility = VISIBLE
-  }
-  if (rbi === WEST) {
-    rbiWest.style.visibility = VISIBLE
-  }
-  if (rbi === NORTHWEST) {
-    rbiNorthWest.style.visibility = VISIBLE
-  }
+}
+
+/**
+ * 隱藏圖片
+ */
+function hiddenImages(object) {
+  object.style.visibility = HIDDEN
+}
+
+/**
+ * 顯示圖片
+ */
+function visibleImages(object) {
+  object.style.visibility = VISIBLE
 }
 
 /**
