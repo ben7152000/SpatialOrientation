@@ -253,9 +253,14 @@ img {
     background-image: linear-gradient(90deg, #AFAFAF, #f7f7f7);
 }
 
-.border-none {
+.border-vertical-none {
     border-top: none;
     border-bottom: none;
+}
+
+.border-horizontal-none {
+    border-right: none;
+    border-left: none;
 }
 
 .north {
