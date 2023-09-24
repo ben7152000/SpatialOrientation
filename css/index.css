@@ -194,9 +194,16 @@ img {
 }
 
 .instrument-img {
+    position: relative;
     width: 130px;
     height: 130px;
     margin-bottom: 10px;
+}
+
+.gyro, .rbi {
+    position: absolute;
+    top: 0;
+    visibility: hidden;
 }
 
 .instrument-title {

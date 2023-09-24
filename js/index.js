@@ -3,6 +3,8 @@
  */
 const FLEX = 'flex'
 const NONE = 'none'
+const VISIBLE = 'visible'
+const HIDDEN = 'hidden'
 const GYRONORTH = 'north'
 const GYROEAST = 'east'
 const GYROSOUTH = 'south'
@@ -32,8 +34,18 @@ const aircraft3 = document.querySelector('#aircraft-3')
 const aircraft4 = document.querySelector('#aircraft-4')
 const checkTrue = document.querySelector('#check-true')
 const checkFail = document.querySelector('#check-fail')
-const instrumentGyro = document.querySelector('#instrument-gyro')
-const instrumentRbi = document.querySelector('#instrument-rbi')
+const gyroNorth = document.querySelector('.gyro-north')
+const gyroEast = document.querySelector('.gyro-east')
+const gyroSouth = document.querySelector('.gyro-south')
+const gyroWest = document.querySelector('.gyro-west')
+const rbiNorth = document.querySelector('.rbi-0')
+const rbiNorthEast = document.querySelector('.rbi-45')
+const rbiEast = document.querySelector('.rbi-90')
+const rbiSouthEast = document.querySelector('.rbi-135')
+const rbiSouth = document.querySelector('.rbi-180')
+const rbiSouthWest = document.querySelector('.rbi-225')
+const rbiWest = document.querySelector('.rbi-270')
+const rbiNorthWest = document.querySelector('.rbi-315')
 const numberZones = document.querySelector('.number-zones')
 const correctResult = document.querySelector('#correct')
 const incorrectResult = document.querySelector('#incorrect')
@@ -51,8 +63,6 @@ const gameTime = 3 // 分鐘
 const delayCheckTime = 1 // 秒
 let currentDrag = null
 let resultNumber = 0
-const imgGyro = document.createElement("img")
-const imgRbi = document.createElement("img")
 const answerParams = {
   direction: '',
   rbi: 0,
@@ -274,8 +284,22 @@ function checkAnswer() {
 function randomDirection() {
   const direction = directions[randomSymbol(directions)]
   answerParams.direction = direction
-  imgGyro.src = `./assets/${direction}.png`
-  instrumentGyro.append(imgGyro)
+  gyroNorth.style.visibility = HIDDEN
+  gyroEast.style.visibility = HIDDEN
+  gyroSouth.style.visibility = HIDDEN
+  gyroWest.style.visibility = HIDDEN
+  if (direction === GYRONORTH) {
+    gyroNorth.style.visibility = VISIBLE
+  }
+  if (direction === GYROEAST) {
+    gyroEast.style.visibility = VISIBLE
+  }
+  if (direction === GYROSOUTH) {
+    gyroSouth.style.visibility = VISIBLE
+  }
+  if (direction === GYROWEST) {
+    gyroWest.style.visibility = VISIBLE
+  }
 }
 
 /**
@@ -284,8 +308,38 @@ function randomDirection() {
 function randomRbi() {
   const rbi = rbis[randomSymbol(rbis)]
   answerParams.rbi = rbi
-  imgRbi.src = `./assets/${rbi}.png`
-  instrumentRbi.append(imgRbi)
+  rbiNorth.style.visibility = HIDDEN
+  rbiNorthEast.style.visibility = HIDDEN
+  rbiEast.style.visibility = HIDDEN
+  rbiSouthEast.style.visibility = HIDDEN
+  rbiSouth.style.visibility = HIDDEN
+  rbiSouthWest.style.visibility = HIDDEN
+  rbiWest.style.visibility = HIDDEN
+  rbiNorthWest.style.visibility = HIDDEN
+  if (rbi === NORTH) {
+    rbiNorth.style.visibility = VISIBLE
+  }
+  if (rbi === NORTHEAST) {
+    rbiNorthEast.style.visibility = VISIBLE
+  }
+  if (rbi === EAST) {
+    rbiEast.style.visibility = VISIBLE
+  }
+  if (rbi === SOUTHEAST) {
+    rbiSouthEast.style.visibility = VISIBLE
+  }
+  if (rbi === SOUTH) {
+    rbiSouth.style.visibility = VISIBLE
+  }
+  if (rbi === SOUTHWEST) {
+    rbiSouthWest.style.visibility = VISIBLE
+  }
+  if (rbi === WEST) {
+    rbiWest.style.visibility = VISIBLE
+  }
+  if (rbi === NORTHWEST) {
+    rbiNorthWest.style.visibility = VISIBLE
+  }
 }
 
 /**
