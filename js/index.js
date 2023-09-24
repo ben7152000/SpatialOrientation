@@ -34,6 +34,7 @@ const checkTrue = document.querySelector('#check-true')
 const checkFail = document.querySelector('#check-fail')
 const instrumentGyro = document.querySelector('#instrument-gyro')
 const instrumentRbi = document.querySelector('#instrument-rbi')
+const numberZones = document.querySelector('.number-zones')
 const correctResult = document.querySelector('#correct')
 const incorrectResult = document.querySelector('#incorrect')
 const performance = document.querySelector('#performance')
@@ -194,6 +195,7 @@ function objectMove(object, left, top) {
 
       if (!currentDrag) return
       const checkPosition = checkClassName(currentDrag.className)
+      numberZones.append(object)
       object.style.left = checkPosition.left + 'px'
       object.style.top = checkPosition.top + 'px'
       resultNumber = checkPosition.number
@@ -237,21 +239,21 @@ function resetAircraft(object, left, top) {
 function checkClassName(className) {
   switch (className) {
     case 'one':
-      return { left: 854, top: 457, number: 1 }
+      return { left: 60, top: 0, number: 1 }
     case 'two':
-      return { left: 914, top: 457, number: 2 }
+      return { left: 120, top: 0, number: 2 }
     case 'three':
-      return { left: 914, top: 517, number: 3 }
+      return { left: 120, top: 60, number: 3 }
     case 'four':
-      return { left: 914, top: 579, number: 4 }
+      return { left: 120, top: 120, number: 4 }
     case 'five':
-      return { left: 854, top: 579, number: 5 }
+      return { left: 60, top: 120, number: 5 }
     case 'six':
-      return { left: 792, top: 579, number: 6 }
+      return { left: 0, top: 120, number: 6 }
     case 'seven':
-      return { left: 792, top: 517, number: 7 }
+      return { left: 0, top: 60, number: 7 }
     case 'eight':
-      return { left: 792, top: 457, number: 8 }
+      return { left: 0, top: 0, number: 8 }
   }
 }
 
@@ -407,10 +409,10 @@ function failAnswer() {
 /**
  * 飛機拖曳
  */
-objectMove(aircraft1, 570,380)
-objectMove(aircraft2, 640, 380)
-objectMove(aircraft3, 570, 450)
-objectMove(aircraft4, 640, 450)
+objectMove(aircraft1, 590,400)
+objectMove(aircraft2, 650, 400)
+objectMove(aircraft3, 590, 460)
+objectMove(aircraft4, 650, 460)
 
 /**
  *  倒數計時
@@ -437,10 +439,10 @@ function startCountdown(duration) {
       goToResultPage()
       outputResult()
       clearInterval(interval)
-      resetAircraft(aircraft1, 570,380)
-      resetAircraft(aircraft2, 640, 380)
-      resetAircraft(aircraft3, 570, 450)
-      resetAircraft(aircraft4, 640, 450)
+      resetAircraft(aircraft1, 590,400)
+      resetAircraft(aircraft2, 650, 400)
+      resetAircraft(aircraft3, 590, 460)
+      resetAircraft(aircraft4, 650, 460)
     } else {
       timer--
     }

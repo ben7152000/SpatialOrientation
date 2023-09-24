@@ -269,44 +269,44 @@ img {
     position: absolute;
     right: 250px;
     bottom: 80px;
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     display: flex;
     flex-wrap: wrap;
 }
 
 .aircraft-zone {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background-image: linear-gradient(90deg, #AFAFAF, #f7f7f7);
 }
 
 .aircraft {
     position: absolute;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     z-index: 3;
     cursor: pointer;
 }
 
 #aircraft-1 {
-    left: 570px;
-    top: 380px;
+    left: 590px;
+    top: 400px;
 }
 
 #aircraft-2 {
-    left: 640px;
-    top: 380px;
+    left: 650px;
+    top: 400px;
 }
 
 #aircraft-3 {
-    left: 570px;
-    top: 450px;
+    left: 590px;
+    top: 460px;
 }
 
 #aircraft-4 {
-    left: 640px;
-    top: 450px;
+    left: 650px;
+    top: 460px;
 }
 
 #check-true, #check-fail {
