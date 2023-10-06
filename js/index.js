@@ -50,6 +50,10 @@ const numberZones = document.querySelector('.number-zones')
 const correctResult = document.querySelector('#correct')
 const incorrectResult = document.querySelector('#incorrect')
 const performance = document.querySelector('#performance')
+const loginInfo = document.querySelector('.login-info')
+const login = document.querySelector('.login')
+const account = document.querySelector('#account')
+const password = document.querySelector('#password')
 
 /**
  * 變數
@@ -68,12 +72,17 @@ const answerParams = {
   rbi: 0,
   number: 0
 }
+const userInfo = {
+  account: 'FTTW',
+  password: 'Afttw4785',
+}
 
 /**
  * 監聽
  */
 start.addEventListener('click', startClickHandler)
 restart.addEventListener('click', restartClickHandler)
+login.addEventListener('click', loginHandler)
 
 /**
  * 進到介紹介面
@@ -97,6 +106,21 @@ function goToGamePage() {
 function goToResultPage() {
   gameInfo.style.display = NONE
   resultInfo.style.display = FLEX
+}
+
+/**
+ * 登入
+ */
+function loginHandler() {
+  const userAccount = account.value
+  const userPassword = password.value
+
+  if (userAccount === userInfo.account && userPassword === userInfo.password) {
+    goToInstructionPage()
+    loginInfo.style.display = NONE
+  } else {
+    alert('帳號或密碼錯誤')
+  }
 }
 
 /**
