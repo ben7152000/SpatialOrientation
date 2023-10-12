@@ -211,14 +211,8 @@ function objectMove(object, left, top) {
       const droppableBelows = [droppableOne, droppableTwo, droppableThree, droppableFour, droppableFive, droppableSix, droppableSeven, droppableEight]
       const filterDroppableBelow = droppableBelows.filter(Boolean)
       if (filterDroppableBelow.includes(currentDrag)) return
-      // if (currentDrag) {
-        // leaveDroppable(currentDrag)
-      // }
 
       currentDrag = filterDroppableBelow[0]
-      // if (currentDrag) {
-        // enterDroppable(currentDrag)
-      // }
     }
 
     document.addEventListener('mousemove', onMouseMove)
@@ -229,6 +223,7 @@ function objectMove(object, left, top) {
 
       if (!currentDrag) return
       const checkPosition = checkClassName(currentDrag.className)
+      console.log(checkPosition, 'checkPosition')
       numberZones.append(object)
       object.style.left = checkPosition.left + 'px'
       object.style.top = checkPosition.top + 'px'
@@ -236,22 +231,17 @@ function objectMove(object, left, top) {
       checkAnswer()
 
       setTimeout(() => {
-        resetAircraft(object, left, top)
-        // leaveDroppable(currentDrag)
+        currentDrag = null
+        resetAircraft(aircraft1, 590,400)
+        resetAircraft(aircraft2, 650, 400)
+        resetAircraft(aircraft3, 590, 460)
+        resetAircraft(aircraft4, 650, 460)
         randomDirection()
         randomRbi()
         getCorrectPosition()
       }, delayCheckTime * 1000)
     }
   }
-
-  // function enterDroppable(elem) {
-  //   elem.style.background = 'pink';
-  // }
-  //
-  // function leaveDroppable(elem) {
-  //   elem.style.background = '';
-  // }
 
   object.ondragstart = function() {
     return false
