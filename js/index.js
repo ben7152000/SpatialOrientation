@@ -231,6 +231,7 @@ function objectMove(object, left, top) {
       checkAnswer()
 
       setTimeout(() => {
+        object.onmouseup = null
         currentDrag = null
         resetAircraft(aircraft1, 590,400)
         resetAircraft(aircraft2, 650, 400)
