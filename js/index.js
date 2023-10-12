@@ -67,6 +67,7 @@ const gameTime = 3 // 分鐘
 const delayCheckTime = 1 // 秒
 let currentDrag = null
 let resultNumber = 0
+let checked = false
 const answerParams = {
   direction: '',
   rbi: 0,
@@ -177,8 +178,9 @@ function randomSymbol(array) {
 /**
  * 拖曳物件
  */
-function objectMove(object, left, top) {
+function objectMove(object) {
   object.onmousedown = function(e) {
+    if (checked) return
     let shiftX = e.clientX - object.getBoundingClientRect().left
     let shiftY = e.clientY - object.getBoundingClientRect().top
 
@@ -233,6 +235,7 @@ function objectMove(object, left, top) {
       setTimeout(() => {
         object.onmouseup = null
         currentDrag = null
+        checked = false
         resetAircraft(aircraft1, 590,400)
         resetAircraft(aircraft2, 650, 400)
         resetAircraft(aircraft3, 590, 460)
@@ -286,6 +289,7 @@ function checkClassName(className) {
  * 檢查答案
  */
 function checkAnswer() {
+  checked = true
   if (answerParams.number === resultNumber) {
     trueAnswer()
   } else {
