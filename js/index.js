@@ -19,14 +19,6 @@ const WEST = 270
 const NORTHWEST = 315
 
 /**
- * API
- */
-const url = 'https://sheets.googleapis.com/v4/spreadsheets'
-const id = '1UbzldKDnnwwWcyYbx-7i10nr-rx_bJMFzSzASHUp3YU'
-const sheet = 'Account'
-const key = 'AIzaSyCRhiUOa03yd0PobVYEnm5Ch0yXjFh9hww'
-
-/**
  * Dom
  */
 const mainInfo = document.querySelector('.main-info')
@@ -71,7 +63,7 @@ const rbis = [NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWE
 let correct = 0
 let incorrect = 0
 let performanceRate = 0
-const gameTime = 3 // 分鐘
+let gameTime = 0 // 分鐘
 const delayCheckTime = 1 // 秒
 let currentDrag = null
 let resultNumber = 0
@@ -560,9 +552,21 @@ function startCountdown(duration) {
 /**
  *  API
  */
-fetch(`${url}/${id}/values/${sheet}?alt=json&key=${key}`)
+const url = 'https://sheets.googleapis.com/v4/spreadsheets'
+const id = '1UbzldKDnnwwWcyYbx-7i10nr-rx_bJMFzSzASHUp3YU'
+const AccountSheet = 'Account'
+const paramsSheet = 'SpatialOrientation'
+const key = 'AIzaSyCRhiUOa03yd0PobVYEnm5Ch0yXjFh9hww'
+
+fetch(`${url}/${id}/values/${AccountSheet}?alt=json&key=${key}`)
   .then(res => res.json())
   .then(res => {
     userInfo.account = res.values[1][1]
     userInfo.password = res.values[1][2]
+  })
+
+fetch(`${url}/${id}/values/${paramsSheet}?alt=json&key=${key}`)
+  .then(res => res.json())
+  .then(res => {
+    gameTime = res.values[1][1]
   })
