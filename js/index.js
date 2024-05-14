@@ -589,7 +589,6 @@ fetch(`${url}/${id}/values/${paramsSheet}?alt=json&key=${key}`)
 
 const enterFullScreen = () => {
   const element = document.documentElement;
-  exitFullScreenDiv.style.display = FLEX
   if (element.requestFullscreen) {
     element.requestFullscreen();
   } else if (element.mozRequestFullScreen) {
@@ -602,7 +601,6 @@ const enterFullScreen = () => {
 }
 
 const exitFullScreen = () => {
-  exitFullScreenDiv.style.display = NONE
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.mozCancelFullScreen) {
@@ -620,6 +618,9 @@ const setupFullScreenEvents = () => {
 
   screenEnlarge.addEventListener('click', enterFullScreen)
   exitFullScreenBtn.addEventListener('click', exitFullScreen)
+  document.addEventListener('fullscreenchange', () => {
+    exitFullScreenDiv.style.display = document.fullscreenElement ? FLEX : NONE
+  });
 }
 
 setupFullScreenEvents()
