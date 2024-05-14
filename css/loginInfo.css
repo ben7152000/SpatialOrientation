@@ -27,7 +27,7 @@
 .account input, .password input {
     border: none;
     outline: none;
-    width: 260px;
+    width: 200px;
     height: 40px;
     font-size: 20px;
     padding-left: 8px;
@@ -39,11 +39,10 @@
 
 .login {
     margin-top: 16px;
-    width: 268px;
+    width: 200px;
     height: 40px;
     font-size: 20px;
     font-weight: 400;
-    border-radius: 10px;
 }
 
 

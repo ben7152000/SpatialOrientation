@@ -54,6 +54,7 @@ const loginInfo = document.querySelector('.login-info')
 const login = document.querySelector('.login')
 const account = document.querySelector('#account')
 const password = document.querySelector('#password')
+const exitFullScreenDiv = document.querySelector('.exit-full-screen')
 
 /**
  * 變數
@@ -588,6 +589,7 @@ fetch(`${url}/${id}/values/${paramsSheet}?alt=json&key=${key}`)
 
 const enterFullScreen = () => {
   const element = document.documentElement;
+  exitFullScreenDiv.style.display = FLEX
   if (element.requestFullscreen) {
     element.requestFullscreen();
   } else if (element.mozRequestFullScreen) {
@@ -600,6 +602,7 @@ const enterFullScreen = () => {
 }
 
 const exitFullScreen = () => {
+  exitFullScreenDiv.style.display = NONE
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.mozCancelFullScreen) {
